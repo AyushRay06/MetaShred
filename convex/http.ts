@@ -218,6 +218,7 @@ http.route({
         - Create a balanced meal plan with proper macronutrient distribution
         - Include a variety of nutrient-dense foods while respecting dietary restrictions
         - Consider meal timing around workouts for optimal performance and recovery
+        - Create the meal according to Indians
         
         CRITICAL SCHEMA INSTRUCTIONS:
         - Your output MUST contain ONLY the fields specified below, NO ADDITIONAL FIELDS

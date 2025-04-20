@@ -48,21 +48,30 @@ const UserPrograms = () => {
             </p>
 
             {/* STATS */}
-            <div className="flex items-center justify-center gap-16 mt-10 font-mono">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-16 mt-10 font-mono">
+              {/* First Stat */}
               <div className="flex flex-col items-center">
                 <p className="text-3xl text-primary">500+</p>
                 <p className="text-sm text-muted-foreground uppercase tracking-wide mt-1">
                   PROGRAMS
                 </p>
               </div>
-              <div className="w-px h-12 bg-border"></div>
+
+              {/* First Divider - Only show on larger screens */}
+              <div className="hidden sm:block w-px h-12 bg-border"></div>
+
+              {/* Second Stat */}
               <div className="flex flex-col items-center">
                 <p className="text-3xl text-primary">3min</p>
                 <p className="text-sm text-muted-foreground uppercase tracking-wide mt-1">
                   CREATION TIME
                 </p>
               </div>
-              <div className="w-px h-12 bg-border"></div>
+
+              {/* Second Divider - Only show on larger screens */}
+              <div className="hidden sm:block w-px h-12 bg-border"></div>
+
+              {/* Third Stat */}
               <div className="flex flex-col items-center">
                 <p className="text-3xl text-primary">100%</p>
                 <p className="text-sm text-muted-foreground uppercase tracking-wide mt-1">

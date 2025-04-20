@@ -1,9 +1,15 @@
 import { SignUp } from "@clerk/nextjs"
+import { dark } from "@clerk/themes"
 
 const SignUpPage = () => {
   return (
     <div>
-      <SignUp />
+      <SignUp
+        appearance={{
+          baseTheme: dark,
+          variables: { colorPrimary: "green" },
+        }}
+      />
     </div>
   )
 }

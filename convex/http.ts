@@ -143,6 +143,8 @@ http.route({
         fitness_goal,
         fitness_level,
         dietary_restrictions,
+        dietary_preference,
+        prefered_workout_split,
       } = payload
 
       console.log("Payload is here:", payload)
@@ -161,6 +163,8 @@ http.route({
       Height: ${height}
       Weight: ${weight}
       Injuries or limitations: ${injuries}
+      Prefered Workout split:${prefered_workout_split}
+
       Available days for workout: ${workout_days}
       Fitness goal: ${fitness_goal}
       Fitness level: ${fitness_level}
@@ -211,6 +215,7 @@ http.route({
         Height: ${height}
         Weight: ${weight}
         Fitness goal: ${fitness_goal}
+        Dietary Preference:${dietary_preference}
         Dietary restrictions: ${dietary_restrictions}
         
         As a professional nutrition coach:
@@ -218,7 +223,7 @@ http.route({
         - Create a balanced meal plan with proper macronutrient distribution
         - Include a variety of nutrient-dense foods while respecting dietary restrictions
         - Consider meal timing around workouts for optimal performance and recovery
-        - Create the meal according to Indians
+        - Use Kilograms or grams to quantify 
         
         CRITICAL SCHEMA INSTRUCTIONS:
         - Your output MUST contain ONLY the fields specified below, NO ADDITIONAL FIELDS

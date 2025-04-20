@@ -221,8 +221,87 @@ const ProfilePage = () => {
                     </Accordion>
                   </div>
                 </TabsContent>
-
                 <TabsContent value="diet">
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="font-mono text-sm text-muted-foreground">
+                        DAILY CALORIE TARGET
+                      </span>
+                      <div className="font-mono text-xl text-primary">
+                        {currentPlan.dietPlan.dailyCalories} KCAL
+                      </div>
+                    </div>
+
+                    <div className="h-px w-full bg-border my-4"></div>
+
+                    <div className="space-y-4">
+                      {currentPlan.dietPlan.meals.map((meal, index) => (
+                        <div
+                          key={index}
+                          className="border border-border rounded-lg overflow-hidden p-4"
+                        >
+                          <div className="flex justify-between">
+                            <div className="flex-1">
+                              <div className="flex items-center gap-2 mb-3">
+                                <div className="w-2 h-2 rounded-full bg-primary"></div>
+                                <h4 className="font-mono text-primary">
+                                  {meal.name}
+                                </h4>
+                              </div>
+                              <ul className="space-y-2">
+                                {meal.foods.map((food, foodIndex) => (
+                                  <li
+                                    key={foodIndex}
+                                    className="flex items-center gap-2 text-sm text-muted-foreground"
+                                  >
+                                    <span className="text-xs text-primary font-mono">
+                                      {String(foodIndex + 1).padStart(2, "0")}
+                                    </span>
+                                    {food}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+
+                            {/* Added macros section */}
+                            <div className="ml-4 border-l border-border pl-4">
+                              <div className="font-mono text-xs text-muted-foreground mb-2">
+                                MACROS (g)
+                              </div>
+                              {meal.macros?.map((macro, i) => (
+                                <div
+                                  key={i}
+                                  className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm"
+                                >
+                                  <div className="text-muted-foreground">
+                                    Protein:
+                                  </div>
+                                  <div className="font-mono">
+                                    {macro.protein || 0}
+                                  </div>
+                                  <div className="text-muted-foreground">
+                                    Carbs:
+                                  </div>
+                                  <div className="font-mono">
+                                    {macro.carbs || 0}
+                                  </div>
+                                  <div className="text-muted-foreground">
+                                    Fats:
+                                  </div>
+                                  <div className="font-mono">
+                                    {macro.fats || 0}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </TabsContent>
+
+                {/* <TabsContent value="diet">
                   <div className="space-y-4">
                     <div className="flex justify-between items-center mb-4">
                       <span className="font-mono text-sm text-muted-foreground">
@@ -264,7 +343,7 @@ const ProfilePage = () => {
                       ))}
                     </div>
                   </div>
-                </TabsContent>
+                </TabsContent> */}
               </Tabs>
             </div>
           )}

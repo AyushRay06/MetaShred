@@ -121,8 +121,14 @@ function validateDietPlan(plan: any) {
     meals: plan.meals.map((meal: any) => ({
       name: meal.name,
       foods: meal.foods,
+      macros: meal.macros?.map((macro: any) => ({
+        protein: macro.protein || 0, // Default to 0 if missing
+        carbs: macro.carbs || 0, // Default to 0 if missing
+        fats: macro.fats || 0, // Default to 0 if missing
+      })) || [{ protein: 0, carbs: 0, fats: 0 }],
     })),
   }
+  console.log(plan)
   return validatedPlan
 }
 
@@ -221,16 +227,16 @@ http.route({
         As a professional nutrition coach:
         - Calculate appropriate daily calorie intake based on the person's stats and goals
         - Create a balanced meal plan with proper macronutrient distribution
-        - Include a variety of nutrient-dense foods while respecting dietary restrictions
+        - Include a variety of nutrient-dense foods while respecting dietary restrictions and dietary preference
         - Consider meal timing around workouts for optimal performance and recovery
         - Use Kilograms or grams to quantify 
         
         CRITICAL SCHEMA INSTRUCTIONS:
         - Your output MUST contain ONLY the fields specified below, NO ADDITIONAL FIELDS
         - "dailyCalories" MUST be a NUMBER, not a string
-        - DO NOT add fields like "supplements", "macros", "notes", or ANYTHING else
+        - DO NOT add fields like "supplements", "notes", or ANYTHING else
         - ONLY include the EXACT fields shown in the example below
-        - Each meal should include ONLY a "name" and "foods" array
+        - Each meal should include ONLY a "name", "foods" array and "macros array".
 
         Return a JSON object with this EXACT structure and no other fields:
         {
@@ -238,11 +244,13 @@ http.route({
           "meals": [
             {
               "name": "Breakfast",
-              "foods": ["Oatmeal with berries", "Greek yogurt", "Black coffee"]
+              "foods": ["Oatmeal with berries", "Greek yogurt", "Black coffee"],
+              "macros":[{"protein":40,"carbs":70 ,"fats":10}]
             },
             {
               "name": "Lunch",
-              "foods": ["Grilled chicken salad", "Whole grain bread", "Water"]
+              "foods": ["Grilled chicken salad", "Whole grain bread", "Water"],
+              "macros":[{"protein":40,"carbs":70 ,"fats":10}]
             }
           ]
         }

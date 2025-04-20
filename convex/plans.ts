@@ -26,6 +26,13 @@ export const createPlan = mutation({
         v.object({
           name: v.string(),
           foods: v.array(v.string()),
+          macros: v.array(
+            v.object({
+              protein: v.number(),
+              carbs: v.number(),
+              fats: v.number(),
+            })
+          ),
         })
       ),
     }),
